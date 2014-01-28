@@ -1,5 +1,6 @@
 package jnode;
 
+import jnode.core.Parameters;
 import jnode.ui.WriteMessage;
 
 import java.io.File;
@@ -11,7 +12,11 @@ import java.util.Properties;
 /**
  * @author Kirill Temnenkov (ktemnenkov@intervale.ru)
  */
-public class App {
+public final class App {
+
+    private App() {
+    }
+
     public static void main(String[] args) {
 
         if (args.length < 1) {

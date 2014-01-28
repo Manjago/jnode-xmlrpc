@@ -10,7 +10,8 @@ import java.io.Serializable;
  */
 public class LogWrapper implements Log, Serializable {
 
-    private final Logger logger;
+    private static final long serialVersionUID = -6106218471285111357L;
+    private final transient Logger logger;
 
     /*
     fatal 1

@@ -17,7 +17,9 @@ import java.io.IOException;
  */
 public class XmlRpcServerModule extends JnodeModule {
 
-    private static final int port = 8080;
+    private static final int PORT = 8080;
+    private static final int MILLISEC_IN_SEC = 1000;
+    private static final int SEC_IN_HOUR = 3600;
     private final Logger logger = Logger.getLogger(getClass());
 
     public XmlRpcServerModule(String configFile) throws JnodeModuleException {
@@ -41,7 +43,7 @@ public class XmlRpcServerModule extends JnodeModule {
 
         ServletWebServer webServer;
         try {
-            webServer = new ServletWebServer(servlet, port);
+            webServer = new ServletWebServer(servlet, PORT);
         } catch (ServletException e) {
             logger.l1("fail start XmlRpcServerModule", e);
             return;
@@ -65,7 +67,7 @@ public class XmlRpcServerModule extends JnodeModule {
         while (!Thread.interrupted()) {
             try {
                 logger.l5("Still alive, next report after 1 hour");
-                Thread.sleep(60 * 60 * 1000);
+                Thread.sleep(SEC_IN_HOUR * MILLISEC_IN_SEC);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;

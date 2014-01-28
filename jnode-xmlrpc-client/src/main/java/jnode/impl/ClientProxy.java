@@ -1,6 +1,6 @@
 package jnode.impl;
 
-import jnode.Parameters;
+import jnode.core.Parameters;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
@@ -11,7 +11,14 @@ import java.net.URL;
 /**
  * @author Kirill Temnenkov (ktemnenkov@intervale.ru)
  */
-public class ClientProxy {
+public final class ClientProxy {
+
+    private static final int MILLISEC_IN_SEC = 1000;
+    private static final int HALF_MINUTE = 30;
+
+    private ClientProxy() {
+    }
+
     static XmlRpcClient getXmlRpcClient() throws MalformedURLException {
 
         Parameters pars = Parameters.getInstance();
@@ -22,8 +29,8 @@ public class ClientProxy {
         config.setBasicPassword(pars.getPwd());
         config.setEnabledForExtensions(false);
         config.setContentLengthOptional(false);
-        config.setConnectionTimeout(30 * 1000);
-        config.setReplyTimeout(30 * 1000);
+        config.setConnectionTimeout(HALF_MINUTE * MILLISEC_IN_SEC);
+        config.setReplyTimeout(HALF_MINUTE * MILLISEC_IN_SEC);
 
         XmlRpcClient client = new XmlRpcClient();
         client.setTransportFactory(new XmlRpcCommonsTransportFactory(client));

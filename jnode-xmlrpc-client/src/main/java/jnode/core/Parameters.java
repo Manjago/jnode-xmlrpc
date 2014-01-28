@@ -1,9 +1,9 @@
-package jnode;
+package jnode.core;
 
 /**
  * @author Kirill Temnenkov (ktemnenkov@intervale.ru)
  */
-public class Parameters {
+public final class Parameters {
     private Parameters() {
     }
 
