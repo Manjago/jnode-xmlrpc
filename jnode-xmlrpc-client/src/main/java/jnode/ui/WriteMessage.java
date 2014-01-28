@@ -54,11 +54,11 @@ public class WriteMessage extends JDialog {
         taBody.setText("");
     }
 
-    private boolean isEmptyStr(String value){
+    private boolean isEmptyStr(String value) {
         return value == null || value.length() == 0;
     }
 
-    private boolean isCustomFromTo(){
+    private boolean isCustomFromTo() {
         return !isEmptyStr(tfFrom.getText()) && !isEmptyStr(tfTo.getText());
     }
 
@@ -66,9 +66,9 @@ public class WriteMessage extends JDialog {
 
         String result;
 
-        if (isCustomFromTo()){
+        if (isCustomFromTo()) {
             result = EchomailToolsProxy.writeEchomail(tfArea.getText(), tfSubject.getText(), taBody.getText(), tfFrom.getText(), tfTo.getText());
-        } else{
+        } else {
             result = EchomailToolsProxy.writeEchomail(tfArea.getText(), tfSubject.getText(), taBody.getText());
         }
 
@@ -88,10 +88,4 @@ public class WriteMessage extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        WriteMessage dialog = new WriteMessage();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }
