@@ -4,6 +4,8 @@ import jnode.core.Parameters;
 import jnode.ui.WriteMessage;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.properties.EncryptableProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,20 +18,22 @@ import java.util.Properties;
  */
 public final class App {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+
     private App() {
     }
 
     public static void main(String[] args) {
 
         if (args.length < 1) {
-            System.out.println("need path to config in call parameters");
+            LOGGER.error("need path to config in call parameters");
             return;
         }
 
         Properties props = tryLoadProperties(args[0]);
 
         if (props == null) {
-            System.out.println("config file " + args[0] + " not found");
+            LOGGER.error("config file " + args[0] + " not found");
             return;
         }
 
@@ -56,6 +60,7 @@ public final class App {
                 }
                 return props;
             } catch (IOException ignored) {
+                LOGGER.error("error with file {}", filename, ignored);
             }
         }
         return null;

@@ -12,6 +12,10 @@
     <name>jnode-xmlrpc-client</name>
     <artifactId>jnode-xmlrpc-client</artifactId>
 
+    <properties>
+        <logback.version>1.0.6</logback.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -95,6 +99,16 @@
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt</artifactId>
             <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 

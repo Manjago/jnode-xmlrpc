@@ -37,7 +37,7 @@ public class EchomailToolsImpl implements EchomailTools {
 
     @Override
     public String writeEchomail(String areaname, String subject, String text, String fromName, String toName) throws XmlRpcException {
-        System.out.println("areaname = [" + areaname + "], subject = [" + subject + "], text = [" + text + "], fromName = [" + fromName + "], toName = [" + toName + "]");
+        logger.l5("areaname = [" + areaname + "], subject = [" + subject + "], text = [" + text + "], fromName = [" + fromName + "], toName = [" + toName + "]");
 
         check(areaname, "areaname");
         check(subject, "subject");
