@@ -2,6 +2,8 @@ package jnode;
 
 import jnode.core.Parameters;
 import jnode.ui.WriteMessage;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.properties.EncryptableProperties;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,7 +48,9 @@ public final class App {
         if (config.exists() && config.canRead()) {
 
             try {
-                Properties props = new Properties();
+                StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+                encryptor.setPassword("$simpleP00s");
+                Properties props = new EncryptableProperties(encryptor);
                 try (InputStream is = new FileInputStream(config)) {
                     props.load(is);
                 }
