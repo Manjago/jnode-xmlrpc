@@ -1,7 +1,7 @@
 package jnode;
 
 import jnode.core.Parameters;
-import jnode.ui.WriteMessage;
+import jnode.ui.MainForm;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.properties.EncryptableProperties;
 import org.slf4j.Logger;
@@ -41,10 +41,7 @@ public final class App {
         Parameters.getInstance().setUser(props.getProperty("login"));
         Parameters.getInstance().setPwd(props.getProperty("password"));
 
-        WriteMessage dialog = new WriteMessage();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+        MainForm.runMe();
     }
 
     private static Properties tryLoadProperties(String filename) {

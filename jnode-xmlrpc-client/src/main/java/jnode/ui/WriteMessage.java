@@ -3,9 +3,11 @@ package jnode.ui;
 import jnode.impl.EchomailToolsProxy;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-public class WriteMessage extends JDialog {
+public class WriteMessage extends JInternalFrame {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -16,8 +18,12 @@ public class WriteMessage extends JDialog {
     private JTextField tfTo;
 
     public WriteMessage() {
+        super("Написать сообщение",
+                true,
+                true,
+                true,
+                true);
         setContentPane(contentPane);
-        setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
@@ -33,12 +39,7 @@ public class WriteMessage extends JDialog {
         });
 
 // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
@@ -46,6 +47,9 @@ public class WriteMessage extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        setSize(Sizer.internalSize());
+        setLocation(Sizer.internalLocation());
+
     }
 
     private void clear() {
