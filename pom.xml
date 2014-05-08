@@ -9,6 +9,7 @@
         <module>jnode-xmlrpc-common</module>
         <module>jnode-xmlrpc-server</module>
         <module>jnode-xmlrpc-client</module>
+        <module>jnode-xmlrpc-web</module>
         <module>jnode-xmlrpc-assembly</module>
     </modules>
     <packaging>pom</packaging>
