@@ -43,4 +43,13 @@
         </listener-class>
     </listener>
 
+    <servlet>
+        <servlet-name>echomail</servlet-name>
+        <servlet-class>jnode.ui.server.impl.EchoMailServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>echomail</servlet-name>
+        <url-pattern>/jnode_ui/echomail</url-pattern>
+    </servlet-mapping>
+
 </web-app>

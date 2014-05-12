@@ -5,5 +5,25 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+    <bean id="placeholderConfig"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>file:/opt/jnode/config.properties</value>
+        </property>
+    </bean>
+
+    <bean id="echoMailDAO" class="jnode.ui.server.dao.impl.EchoMailDAOImpl">
+        <property name="echomailToolsProxy" ref="echomailToolsProxy"/>
+    </bean>
+
+    <bean id="clientProxy" class="jnode.ui.server.xmlrpc.ClientProxy">
+        <property name="pwd" value="${pwd}"/>
+        <property name="connString" value="${connString}"/>
+        <property name="user" value="${user}"/>
+    </bean>
+
+    <bean id="echomailToolsProxy" class="jnode.ui.server.xmlrpc.EchomailToolsProxy">
+        <property name="clientProxy" ref="clientProxy"/>
+    </bean>
 
 </beans>
