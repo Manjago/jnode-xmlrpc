@@ -71,9 +71,14 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
+                            <goal>i18n</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <generateDirectory>${basedir}/src</generateDirectory>
+                    <i18nConstantsBundle>jnode.ui.client.generated.ModuleConstants</i18nConstantsBundle>
+                </configuration>
             </plugin>
         </plugins>
         <pluginManagement>
