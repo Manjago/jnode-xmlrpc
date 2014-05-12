@@ -78,6 +78,7 @@
                 <configuration>
                     <generateDirectory>${basedir}/src</generateDirectory>
                     <i18nConstantsBundle>jnode.ui.client.generated.ModuleConstants</i18nConstantsBundle>
+                    <i18nMessagesBundle>jnode.ui.client.generated.ModuleMessages</i18nMessagesBundle>
                 </configuration>
             </plugin>
         </plugins>
