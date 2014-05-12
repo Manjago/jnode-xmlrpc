@@ -16,14 +16,14 @@
         <property name="echomailToolsProxy" ref="echomailToolsProxy"/>
     </bean>
 
-    <bean id="clientProxy" class="jnode.ui.server.xmlrpc.ClientProxy">
+    <bean id="authInfo" class="jnode.ui.server.xmlrpc.AuthInfo">
         <property name="pwd" value="${pwd}"/>
         <property name="connString" value="${connString}"/>
         <property name="user" value="${user}"/>
     </bean>
 
     <bean id="echomailToolsProxy" class="jnode.ui.server.xmlrpc.EchomailToolsProxy">
-        <property name="clientProxy" ref="clientProxy"/>
+        <property name="authInfo" ref="authInfo"/>
     </bean>
 
 </beans>

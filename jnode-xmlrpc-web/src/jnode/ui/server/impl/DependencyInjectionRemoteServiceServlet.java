@@ -1,6 +1,7 @@
 package jnode.ui.server.impl;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import jnode.ui.server.ModuleRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +62,9 @@ public class DependencyInjectionRemoteServiceServlet extends
 					field.setAccessible(false);
 				}
 				logger.debug("Dependency injection successful: " + this.getClass().getName() + "." + field.getName());			} catch (IllegalArgumentException e) {
-				throw new RuntimeException(e);
+				throw new ModuleRuntimeException(e);
 			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
+				throw new ModuleRuntimeException(e);
 			}
 		}
 	}

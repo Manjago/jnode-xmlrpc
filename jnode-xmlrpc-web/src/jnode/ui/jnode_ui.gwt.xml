@@ -5,7 +5,7 @@
 	<inherits name="com.google.gwt.i18n.I18N" />
 	<inherits name='com.sencha.gxt.ui.GXT' />
 
-	<entry-point class='jnode.ui.client.Main' />
+	<entry-point class='jnode.ui.client.starup.Main' />
         <inherits name='com.sencha.gxt.theme.base.Base'/>
 
 	<source path='client' />
