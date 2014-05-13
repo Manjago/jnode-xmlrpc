@@ -6,27 +6,7 @@
         <format>zip</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
-    <moduleSets>
-        <moduleSet>
 
-            <useAllReactorProjects>true</useAllReactorProjects>
-
-            <includes>
-                <include>jnode-xmlrpc:jnode-xmlrpc-web</include>
-            </includes>
-            <binaries>
-                <outputDirectory>jnode/lib</outputDirectory>
-                <unpack>false</unpack>
-                <dependencySets>
-                    <dependencySet>
-                        <unpack>false</unpack>
-                        <scope>runtime</scope>
-                        <outputDirectory>jnode/lib</outputDirectory>
-                    </dependencySet>
-                </dependencySets>
-            </binaries>
-        </moduleSet>
-    </moduleSets>
 
     <fileSets>
         <fileSet>
