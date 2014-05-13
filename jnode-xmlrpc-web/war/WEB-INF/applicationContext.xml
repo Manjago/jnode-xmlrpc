@@ -16,6 +16,10 @@
         <property name="echomailToolsProxy" ref="echomailToolsProxy"/>
     </bean>
 
+    <bean id="jscriptDAO" class="jnode.ui.server.dao.impl.JscriptDAOImpl">
+        <property name="scripterProxy" ref="scripterProxy"/>
+    </bean>
+
     <bean id="authInfo" class="jnode.ui.server.xmlrpc.AuthInfo">
         <property name="pwd" value="${pwd}"/>
         <property name="connString" value="${connString}"/>
@@ -23,6 +27,10 @@
     </bean>
 
     <bean id="echomailToolsProxy" class="jnode.ui.server.xmlrpc.EchomailToolsProxy">
+        <property name="authInfo" ref="authInfo"/>
+    </bean>
+
+    <bean id="scripterProxy" class="jnode.ui.server.xmlrpc.ScripterProxy">
         <property name="authInfo" ref="authInfo"/>
     </bean>
 

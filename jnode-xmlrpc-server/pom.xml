@@ -41,9 +41,9 @@
         <dependency>
             <groupId>jnode</groupId>
             <artifactId>jnode-core</artifactId>
-            <version>cd8284</version>
+            <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/jnode-core-1.0-rcd8284.jar</systemPath>
+            <systemPath>${project.basedir}/lib/jnode-core-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>jnode-xmlrpc</groupId>

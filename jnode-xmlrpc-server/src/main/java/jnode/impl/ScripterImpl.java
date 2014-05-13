@@ -3,6 +3,7 @@ package jnode.impl;
 import jnode.Scripter;
 import jnode.jscript.JscriptExecutor;
 import jnode.logger.Logger;
+import jnode.robot.ScriptFix;
 import org.apache.xmlrpc.XmlRpcException;
 
 import java.text.MessageFormat;
@@ -27,6 +28,17 @@ public class ScripterImpl implements Scripter {
         }
 
         String result = JscriptExecutor.executeScript(realId);
+        if (result == null) {
+            result = "";
+        }
+        logger.l5("run with result " + result);
+        return result;
+    }
+
+    @Override
+    public String runScript(String content) throws XmlRpcException {
+        logger.l5("run script = [" + content + "]");
+        String result = ScriptFix.executeScriptWithConsole(content, false);
         if (result == null) {
             result = "";
         }

@@ -15,4 +15,12 @@ public interface Scripter {
      * @throws XmlRpcException
      */
     String run(String id) throws XmlRpcException;
+
+    /**
+     * Выполнить скрипт content. Возвращается то, что понаписали в console
+     * @param content скрипт
+     * @return то, что понаписали в console
+     * @throws XmlRpcException
+     */
+    String runScript(String content)  throws XmlRpcException;
 }

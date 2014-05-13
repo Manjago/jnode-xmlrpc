@@ -1,5 +1,6 @@
 package jnode.ui.client;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
@@ -33,5 +34,20 @@ public class Desktop implements IsWidget {
         return outer;
     }
 
+    public void launchWidget(IsWidget form) {
+        clearDesktop();
+
+        workspace.setWidget(form);
+
+        forceLayout();
+    }
+
+    private void clearDesktop() {
+        workspace.clear();
+    }
+
+    private void forceLayout() {
+        asWidget().forceLayout();
+    }
 
 }

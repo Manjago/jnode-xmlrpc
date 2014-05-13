@@ -52,6 +52,15 @@
         <url-pattern>/jnode_ui/echomail</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>jscript</servlet-name>
+        <servlet-class>jnode.ui.server.impl.JscriptServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jscript</servlet-name>
+        <url-pattern>/jnode_ui/jscript</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>jnode_ui.html</welcome-file>
     </welcome-file-list>

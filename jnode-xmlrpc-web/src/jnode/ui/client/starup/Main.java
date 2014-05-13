@@ -10,6 +10,7 @@ import com.sencha.gxt.widget.core.client.menu.MenuItem;
 import jnode.ui.client.Desktop;
 import jnode.ui.client.Helper;
 import jnode.ui.client.ui.EchoMailForm;
+import jnode.ui.client.ui.JscriptForm;
 
 public class Main implements EntryPoint {
     @Override
@@ -21,6 +22,12 @@ public class Main implements EntryPoint {
             @Override
             public void onSelection(SelectionEvent<MenuItem> event) {
                 new EchoMailForm().run();
+            }
+        }));
+        sub.add(new MenuItem("consola", new SelectionHandler<MenuItem>() {
+            @Override
+            public void onSelection(SelectionEvent<MenuItem> event) {
+                desktop.launchWidget(new JscriptForm());
             }
         }));
 
