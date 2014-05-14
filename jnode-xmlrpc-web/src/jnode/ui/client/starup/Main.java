@@ -40,10 +40,12 @@ public class Main implements EntryPoint {
         new LoginForm(new Lambda<Void, Void>() {
             @Override
             public Void execute(Void arg) {
-                desktop.getMenuBar().add(new MenuBarItem(Helper.CONSTANTS.menuTrash(), sub));
 
                 return null;
             }
         }).run();
+
+        desktop.getMenuBar().add(new MenuBarItem(Helper.CONSTANTS.menuTrash(), sub));
+
     }
 }

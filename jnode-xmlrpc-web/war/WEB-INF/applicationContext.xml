@@ -20,6 +20,11 @@
         <property name="scripterProxy" ref="scripterProxy"/>
     </bean>
 
+    <bean id="authDAO" class="jnode.ui.server.dao.impl.AuthDAOImpl">
+        <property name="adminPassword" value="${adminPassword}"/>
+        <property name="adminLogin" value="${adminLogin}"/>
+    </bean>
+
     <bean id="authInfo" class="jnode.ui.server.xmlrpc.AuthInfo">
         <property name="pwd" value="${pwd}"/>
         <property name="connString" value="${connString}"/>

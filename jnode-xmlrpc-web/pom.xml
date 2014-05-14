@@ -12,7 +12,7 @@
 
     <properties>
         <logback.version>1.0.6</logback.version>
-        <gwt.version>2.6.0</gwt.version>
+        <gwt.version>2.6.1</gwt.version>
         <gxt.version>3.1.0</gxt.version>
         <spring.version>3.0.6.RELEASE</spring.version>
     </properties>

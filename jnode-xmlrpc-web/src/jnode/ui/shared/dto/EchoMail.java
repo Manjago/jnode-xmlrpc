@@ -3,6 +3,7 @@ package jnode.ui.shared.dto;
 import java.io.Serializable;
 
 public class EchoMail implements Serializable {
+    private static final long serialVersionUID = -6762739782340505355L;
     private String echoarea;
     private String subject;
     private String body;
