@@ -1,4 +1,4 @@
-package jnode.ui.client.ui.sys;
+package jnode.ui.client;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -8,6 +8,7 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import jnode.ui.client.Helper;
+import jnode.ui.client.ui.sys.CommonDialog;
 
 public class ExceptionForm extends CommonDialog {
 

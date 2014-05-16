@@ -17,6 +17,8 @@ import jnode.ui.client.ui.sys.BlockingServiceCallback;
 public class JscriptForm implements IsWidget {
 
 
+    private static final int SCRIPT_HEIGHT = 300;
+    private static final int RESP_HEIGHT = 300;
     private final ContentPanel widget;
     private final TextArea resp;
 
@@ -28,13 +30,13 @@ public class JscriptForm implements IsWidget {
         widget.setHeadingText("jscript consola");
 
         final TextArea body = new TextArea();
-        body.setHeight(300);
+        body.setHeight(SCRIPT_HEIGHT);
         body.setAllowBlank(false);
         body.setEmptyText("script here");
         outer.add(new FieldLabel(body, "script"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
         resp = new TextArea();
-        resp.setHeight(300);
+        resp.setHeight(RESP_HEIGHT);
         resp.setAllowBlank(true);
         resp.setReadOnly(true);
         outer.add(new FieldLabel(resp, "responce"), new VerticalLayoutContainer.VerticalLayoutData(1, 1));

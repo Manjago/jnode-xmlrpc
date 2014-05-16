@@ -3,8 +3,6 @@ package jnode.ui.client;
 import com.google.gwt.core.client.GWT;
 import jnode.ui.client.generated.ModuleConstants;
 import jnode.ui.client.generated.ModuleMessages;
-import jnode.ui.client.ui.sys.ExceptionForm;
-import jnode.ui.client.ui.sys.ExceptionParser;
 import jnode.ui.shared.ModuleException;
 
 public final class Helper {

@@ -1,6 +1,5 @@
 package jnode.ui.client;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
@@ -9,11 +8,6 @@ import com.sencha.gxt.widget.core.client.menu.MenuBar;
 public class Desktop implements IsWidget {
 
     private final VerticalLayoutContainer outer;
-
-    public MenuBar getMenuBar() {
-        return menuBar;
-    }
-
     private final ContentPanel workspace;
     private final MenuBar menuBar;
 
@@ -28,6 +22,10 @@ public class Desktop implements IsWidget {
 
         outer.add(menuBar);
         outer.add(workspace);
+    }
+
+    public MenuBar getMenuBar() {
+        return menuBar;
     }
 
     public VerticalLayoutContainer asWidget() {

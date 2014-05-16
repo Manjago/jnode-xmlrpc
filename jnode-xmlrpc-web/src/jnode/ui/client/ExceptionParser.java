@@ -1,4 +1,4 @@
-package jnode.ui.client.ui.sys;
+package jnode.ui.client;
 
 import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.user.client.rpc.StatusCodeException;
@@ -6,8 +6,6 @@ import jnode.ui.shared.ModuleException;
 import jnode.ui.shared.SharedUtils;
 
 public class ExceptionParser {
-
-    private static final int ORA_MESSAGE_SHIFT = 4;
 
     /**
      * Текст для пользователя

@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 /**
  * @author Kirill Temnenkov (ktemnenkov@intervale.ru)
  */
-public final class ScripterProxy {
+public class ScripterProxy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ScripterProxy.class);
 
@@ -21,10 +21,6 @@ public final class ScripterProxy {
     }
 
     private AuthInfo authInfo;
-
-
-    private ScripterProxy() {
-    }
 
     public String runScript(String id) throws XmlRpcException, MalformedURLException {
         ClientFactory factory = new ClientFactory(ClientProxy.getXmlRpcClient(authInfo));
