@@ -1,7 +1,6 @@
-package jnode.ui.client.ui;
+package jnode.ui.client.ui.forms;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.ContentPanel;
@@ -10,11 +9,10 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.TextArea;
-import com.sencha.gxt.widget.core.client.info.Info;
 import jnode.ui.client.Helper;
 import jnode.ui.client.services.JscriptService;
 import jnode.ui.client.services.JscriptServiceAsync;
-import jnode.ui.shared.ModuleException;
+import jnode.ui.client.ui.sys.BlockingServiceCallback;
 
 public class JscriptForm implements IsWidget {
 
@@ -25,6 +23,7 @@ public class JscriptForm implements IsWidget {
     public JscriptForm() {
         VerticalLayoutContainer outer = new VerticalLayoutContainer();
 
+        //todo нормальные метки
         widget = new ContentPanel();
         widget.setHeadingText("jscript consola");
 
@@ -49,7 +48,7 @@ public class JscriptForm implements IsWidget {
         widget.addButton(new TextButton(Helper.CONSTANTS.buttonCancel(), new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
-
+                  //TODO нормально закрыть
             }
         }));
 
@@ -65,23 +64,15 @@ public class JscriptForm implements IsWidget {
 
     private void exec(String content) {
         JscriptServiceAsync service = GWT.create(JscriptService.class);
-        service.executeScript(content, new AsyncCallback<String>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                GWT.log(caught.getMessage());
-                if (caught instanceof ModuleException) {
-                    ModuleException e = (ModuleException) caught;
-                    GWT.log(e.getStrCause());
-                    GWT.log(e.getStrName());
-                }
-                Info.display("error", caught.toString());
-            }
 
+        service.executeScript(content, new BlockingServiceCallback<String>("consola") {
             @Override
-            public void onSuccess(String s) {
+            public void onSuccess(String result) {
+                getBlocker().stop();
                 resp.clear();
-                resp.setValue(s);
+                resp.setValue(result);
             }
         });
+
     }
 }

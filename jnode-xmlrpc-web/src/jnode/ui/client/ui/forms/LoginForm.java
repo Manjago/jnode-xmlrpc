@@ -1,4 +1,4 @@
-package jnode.ui.client.ui;
+package jnode.ui.client.ui.forms;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -12,10 +12,12 @@ import com.sencha.gxt.widget.core.client.form.FieldLabel;
 import com.sencha.gxt.widget.core.client.form.PasswordField;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.info.Info;
+import jnode.ui.client.Helper;
 import jnode.ui.client.services.AuthService;
 import jnode.ui.client.services.AuthServiceAsync;
 import jnode.ui.client.services.EchoMailService;
 import jnode.ui.client.services.EchoMailServiceAsync;
+import jnode.ui.client.ui.sys.BlockingServiceCallback;
 import jnode.ui.shared.Lambda;
 import jnode.ui.shared.ModuleException;
 import jnode.ui.shared.dto.AuthInfo;
@@ -53,24 +55,17 @@ public class LoginForm implements IsWidget {
                      l.setLogin(login.getCurrentValue());
                      l.setPassword(pwd.getCurrentValue());
 
-                     //todo нормальный обработчик ошибки
-                     // todo нормальный блокировщик
-                     service.auth(l, new AsyncCallback<AuthInfo>() {
+                     service.auth(l, new BlockingServiceCallback<AuthInfo>("login") {
                          @Override
                          public void onFailure(Throwable caught) {
-                             GWT.log(caught.getMessage());
-                             if (caught instanceof ModuleException) {
-                                 ModuleException e = (ModuleException) caught;
-                                 GWT.log(e.getStrCause());
-                                 GWT.log(e.getStrName());
-                             }
-                             Info.display("error", caught.toString());
+                             super.onFailure(caught);
+                             Info.display(Helper.CONSTANTS.titleInformation(), Helper.CONSTANTS.badPassword());
                              panel.hide();
-
                          }
 
                          @Override
                          public void onSuccess(AuthInfo result) {
+                             getBlocker().stop();
                              if (onSuccess != null){
                                  onSuccess.execute(null);
                              }

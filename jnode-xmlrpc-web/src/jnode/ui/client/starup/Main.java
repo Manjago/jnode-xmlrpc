@@ -1,6 +1,7 @@
 package jnode.ui.client.starup;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -9,14 +10,16 @@ import com.sencha.gxt.widget.core.client.menu.MenuBarItem;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 import jnode.ui.client.Desktop;
 import jnode.ui.client.Helper;
-import jnode.ui.client.ui.EchoMailForm;
-import jnode.ui.client.ui.JscriptForm;
-import jnode.ui.client.ui.LoginForm;
+import jnode.ui.client.ui.forms.EchoMailForm;
+import jnode.ui.client.ui.sys.ExceptionHandler;
+import jnode.ui.client.ui.forms.JscriptForm;
+import jnode.ui.client.ui.forms.LoginForm;
 import jnode.ui.shared.Lambda;
 
 public class Main implements EntryPoint {
     @Override
     public void onModuleLoad() {
+        GWT.setUncaughtExceptionHandler(new ExceptionHandler());
         final Desktop desktop = new Desktop();
 
         final Menu sub = new Menu();
@@ -40,12 +43,10 @@ public class Main implements EntryPoint {
         new LoginForm(new Lambda<Void, Void>() {
             @Override
             public Void execute(Void arg) {
-
+                desktop.getMenuBar().add(new MenuBarItem(Helper.CONSTANTS.menuTrash(), sub));
                 return null;
             }
         }).run();
-
-        desktop.getMenuBar().add(new MenuBarItem(Helper.CONSTANTS.menuTrash(), sub));
 
     }
 }

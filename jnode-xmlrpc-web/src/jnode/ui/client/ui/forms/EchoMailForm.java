@@ -1,7 +1,6 @@
-package jnode.ui.client.ui;
+package jnode.ui.client.ui.forms;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Window;
@@ -15,7 +14,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import jnode.ui.client.Helper;
 import jnode.ui.client.services.EchoMailService;
 import jnode.ui.client.services.EchoMailServiceAsync;
-import jnode.ui.shared.ModuleException;
+import jnode.ui.client.ui.sys.BlockingServiceCallback;
 import jnode.ui.shared.dto.EchoMail;
 
 public class EchoMailForm implements IsWidget {
@@ -83,21 +82,10 @@ public class EchoMailForm implements IsWidget {
         dto.setSubject(subject);
         dto.setEchoarea(echoarea);
         dto.setBody(body);
-        service.send(dto, new AsyncCallback<Void>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                GWT.log(caught.getMessage());
-                if (caught instanceof ModuleException) {
-                    ModuleException e = (ModuleException) caught;
-                    GWT.log(e.getStrCause());
-                    GWT.log(e.getStrName());
-                }
-                Info.display("error", caught.toString());
-
-            }
-
+        service.send(dto, new BlockingServiceCallback<Void>("jscriptform") {
             @Override
             public void onSuccess(Void result) {
+                getBlocker().stop();
                 Info.display(Helper.CONSTANTS.titleInformation(), Helper.MESSAGES.echomailSendOk(subject, echoarea));
             }
         });
