@@ -1,4 +1,4 @@
-package jnode.ui.client;
+package jnode.ui.client.ui.sys;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.sencha.gxt.widget.core.client.ContentPanel;

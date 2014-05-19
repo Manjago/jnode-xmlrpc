@@ -1,7 +1,6 @@
 package jnode.ui.client.ui.sys;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import jnode.ui.client.Helper;
 
 public abstract class ServiceCallBack<E> implements AsyncCallback<E> {
 
@@ -21,7 +20,7 @@ public abstract class ServiceCallBack<E> implements AsyncCallback<E> {
 
 	public void onFailure(Throwable caught) {
 		stopBlocking();
-		Helper.showError(caught, testStr);
+		ExceptionHelper.showError(caught, testStr);
 	}
 
 	public abstract void onSuccess(E result);

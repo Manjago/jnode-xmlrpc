@@ -1,4 +1,4 @@
-package jnode.ui.client;
+package jnode.ui.client.ui.sys;
 
 import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.user.client.rpc.StatusCodeException;
