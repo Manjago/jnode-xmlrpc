@@ -25,23 +25,22 @@ public class JscriptForm implements IsWidget {
     public JscriptForm() {
         VerticalLayoutContainer outer = new VerticalLayoutContainer();
 
-        //todo нормальные метки
         widget = new ContentPanel();
-        widget.setHeadingText("jscript consola");
+        widget.setHeadingText(Helper.CONSTANTS.jscriptTitle());
 
         final TextArea body = new TextArea();
         body.setHeight(SCRIPT_HEIGHT);
         body.setAllowBlank(false);
-        body.setEmptyText("script here");
-        outer.add(new FieldLabel(body, "script"), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
+        body.setEmptyText(Helper.CONSTANTS.jscriptHint());
+        outer.add(new FieldLabel(body, Helper.CONSTANTS.jscriptBody()), new VerticalLayoutContainer.VerticalLayoutData(1, -1));
 
         resp = new TextArea();
         resp.setHeight(RESP_HEIGHT);
         resp.setAllowBlank(true);
         resp.setReadOnly(true);
-        outer.add(new FieldLabel(resp, "responce"), new VerticalLayoutContainer.VerticalLayoutData(1, 1));
+        outer.add(new FieldLabel(resp, Helper.CONSTANTS.jscriptResponce()), new VerticalLayoutContainer.VerticalLayoutData(1, 1));
 
-        widget.addButton(new TextButton("execute", new SelectEvent.SelectHandler() {
+        widget.addButton(new TextButton(Helper.CONSTANTS.buttonExec(), new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent selectEvent) {
                  exec(body.getCurrentValue());

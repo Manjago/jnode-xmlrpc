@@ -29,7 +29,7 @@ public class Main implements EntryPoint {
                 new EchoMailForm().run();
             }
         }));
-        sub.add(new MenuItem("consola", new SelectionHandler<MenuItem>() {
+        sub.add(new MenuItem(Helper.CONSTANTS.menuJscript(), new SelectionHandler<MenuItem>() {
             @Override
             public void onSelection(SelectionEvent<MenuItem> event) {
                 desktop.launchWidget(new JscriptForm());
